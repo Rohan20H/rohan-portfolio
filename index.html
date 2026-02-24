@@ -1,14 +1,3 @@
-To elevate your portfolio, I have updated the code with a **modern glassmorphism design**, a more sophisticated **deep navy and indigo color palette**, and advanced **CSS animations**.
-
-### Key Professional Upgrades:
-
-* **Color Palette:** Transitioned to a "Slate & Indigo" theme for a more premium, high-end developer feel.
-* **Glassmorphism:** Added semi-transparent backdrops with subtle borders to cards for a depth effect.
-* **Hover Animations:** Implemented "magnetic" lift effects and glowing borders on interactive elements.
-* **Smooth Transitions:** Added a `clip-path` reveal animation for the hero section and staggered entry for skill tags.
-* **Refined Typography:** Increased letter-spacing and line-height for better readability.
-
-```html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -21,13 +10,15 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
             --primary: #38bdf8;
             --accent: #6366f1;
             --bg-dark: #020617;
-            --card-bg: rgba(30, 41, 59, 0.7);
+            --card-bg: rgba(30, 41, 59, 0.4);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
-            --glass-border: rgba(255, 255, 255, 0.1);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --selection-bg: rgba(99, 102, 241, 0.3);
         }
 
         * { margin:0; padding:0; box-sizing:border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::selection { background: var(--selection-bg); color: #fff; }
 
         body {
             background: var(--bg-dark);
@@ -37,21 +28,21 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
             scroll-behavior: smooth;
         }
 
-        /* Animated Background Gradients */
-        .bg-glow {
-            position: fixed;
-            width: 40vw;
-            height: 40vw;
-            background: radial-gradient(circle, rgba(99, 102, 241, 0.15) 0%, transparent 70%);
-            top: -10%;
-            left: -10%;
-            z-index: -1;
-            animation: float 15s infinite alternate;
+        /* Ambient Background Glows */
+        .bg-glow-1 {
+            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: -1; animation: float 20s infinite alternate;
+        }
+        .bg-glow-2 {
+            position: fixed; bottom: -10%; right: -10%; width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            z-index: -1; animation: float 15s infinite alternate-reverse;
         }
 
         @keyframes float {
-            from { transform: translate(0, 0); }
-            to { transform: translate(100px, 50px); }
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(100px, 50px) rotate(10deg); }
         }
 
         /* Hero Section */
@@ -61,92 +52,87 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at bottom right, #1e1b4b 0%, #020617 60%);
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
             text-align: center;
             padding: 20px;
-            position: relative;
         }
 
         .hero-content h1 { 
-            font-size: clamp(3rem, 8vw, 5rem); 
+            font-size: clamp(3.5rem, 10vw, 6rem); 
             font-weight: 800;
-            margin-bottom: 15px; 
-            letter-spacing: -2px;
-            background: linear-gradient(to right, #fff, var(--primary));
+            margin-bottom: 10px; 
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            animation: slideUp 1s cubic-bezier(0.2, 0.8, 0.2, 1);
+            animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes heroReveal {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
         }
 
         .hero-content h2 { 
             color: var(--text-dim); 
             font-weight: 400; 
-            font-size: 1.4rem; 
+            font-size: 1.5rem; 
             margin-bottom: 40px; 
-            letter-spacing: 1px;
-            animation: fadeIn 1.5s ease-out;
+            letter-spacing: 2px;
+            opacity: 0.8;
         }
 
         .btn {
-            padding: 16px 40px;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
             color: #fff;
             border: none;
-            border-radius: 12px;
+            border-radius: 100px;
             font-weight: 700;
             text-transform: uppercase;
             letter-spacing: 1px;
             cursor: pointer;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
             text-decoration: none;
             display: inline-block;
-            box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.4);
+            box-shadow: 0 15px 30px -10px rgba(99, 102, 241, 0.4);
         }
 
         .btn:hover { 
-            transform: translateY(-3px) scale(1.02); 
-            box-shadow: 0 20px 30px -10px rgba(99, 102, 241, 0.5);
+            transform: translateY(-5px); 
+            box-shadow: 0 25px 40px -15px rgba(56, 189, 248, 0.6);
             filter: brightness(1.1);
         }
 
-        section { padding: 120px 12%; }
+        section { padding: 120px 15%; position: relative; }
         
         .section-title { 
-            font-size: 2.8rem; 
+            font-size: 3rem; 
             margin-bottom: 60px; 
-            position: relative; 
             font-weight: 800;
+            letter-spacing: -1px;
         }
         
-        .section-title::before {
-            content: '';
-            position: absolute;
-            left: 0;
-            bottom: -5px;
-            width: 80px;
-            height: 4px;
-            background: var(--primary);
-            border-radius: 2px;
-        }
+        .section-title span { color: var(--primary); }
 
-        /* Glass Cards */
+        /* Modern Card Design */
         .card, .skill-group, .resume-cta {
             background: var(--card-bg);
-            backdrop-filter: blur(12px);
+            backdrop-filter: blur(16px);
             border: 1px solid var(--glass-border);
-            padding: 40px;
-            border-radius: 24px;
-            transition: all 0.5s ease;
+            padding: 45px;
+            border-radius: 32px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .card:hover {
-            border-color: var(--primary);
-            background: rgba(30, 41, 59, 0.9);
-            transform: translateY(-8px);
-            box-shadow: 0 20px 40px -20px rgba(0,0,0,0.5);
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
         }
 
-        /* Skills Grid */
+        /* Skills Layout */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
@@ -155,105 +141,92 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
 
         .skill-tag { 
             display: inline-block; 
-            background: rgba(56, 189, 248, 0.1); 
-            padding: 6px 16px; 
-            margin: 5px; 
-            border-radius: 8px; 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 8px 18px; 
+            margin: 6px; 
+            border-radius: 12px; 
             font-size: 0.9rem; 
             color: var(--primary); 
-            border: 1px solid rgba(56, 189, 248, 0.2);
-            transition: 0.3s;
+            border: 1px solid var(--glass-border);
+            transition: 0.4s;
         }
 
         .skill-tag:hover {
             background: var(--primary);
             color: var(--bg-dark);
-            transform: rotate(-2deg);
+            transform: translateY(-3px);
+            border-color: var(--primary);
         }
 
-        .card h3 { color: var(--primary); font-size: 1.6rem; margin-bottom: 12px; }
-        .card .meta { color: var(--accent); font-size: 0.9rem; margin-bottom: 20px; text-transform: uppercase; letter-spacing: 1px; }
+        .card h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; }
+        .card .meta { color: var(--accent); font-size: 0.9rem; margin-bottom: 25px; font-weight: 600; text-transform: uppercase; }
         
         .card ul { list-style: none; }
-        .card li { margin-bottom: 12px; position: relative; padding-left: 25px; color: #cbd5e1; }
+        .card li { margin-bottom: 15px; position: relative; padding-left: 28px; color: #cbd5e1; }
         .card li::before { 
             content: '→'; 
-            position: absolute; 
-            left: 0; 
-            color: var(--primary);
-            font-weight: bold;
+            position: absolute; left: 0; color: var(--primary); font-weight: 800;
         }
 
         .resume-cta {
-            background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(56, 189, 248, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
             text-align: center;
-            border: 1px solid rgba(99, 102, 241, 0.3);
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
         footer { 
             text-align: center; 
-            padding: 80px 20px; 
+            padding: 100px 20px; 
             background: #010409;
             border-top: 1px solid var(--glass-border);
         }
 
-        footer a { transition: 0.3s; text-decoration: none; }
-        footer a:hover { color: var(--primary) !important; }
-
-        /* Animations */
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(40px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .reveal { opacity: 0; transform: translateY(50px); transition: all 1s cubic-bezier(0.2, 0.8, 0.2, 1); }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Reveal Animation Classes */
+        .reveal { opacity: 0; transform: translateY(50px); filter: blur(5px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); filter: blur(0); }
 
         @media (max-width: 768px) {
-            section { padding: 80px 5%; }
+            section { padding: 80px 8%; }
             .section-title { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
 
-<div class="bg-glow"></div>
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
 
 <header>
     <div class="hero-content">
         <h1>Rohan H</h1>
         <h2>Java Developer | Full Stack Backend Engineer</h2>
-        <a href="#about" class="btn">View Portfolio</a>
+        <a href="#about" class="btn">Explore My Work</a>
     </div>
 </header>
 
 <section id="about" class="reveal">
-    <h2 class="section-title">Professional Summary</h2>
-    <p style="font-size: 1.25rem; color: #cbd5e1; max-width: 900px; font-weight: 300;">
-        [cite_start]Motivated Java Developer with 1 year of experience building scalable web applications. [cite: 7]
-        [cite_start]Expertise in optimizing **RESTful APIs** and **MySQL queries** in Agile environments, improving system performance by up to 25%. [cite: 8, 20]
-        [cite_start]Certified in Java Full Stack Development, passionate about delivering modular, high-quality code. [cite: 9]
+    <h2 class="section-title">Professional <span>Summary</span></h2>
+    <p style="font-size: 1.3rem; color: #cbd5e1; max-width: 950px; font-weight: 300; line-height: 1.8;">
+        Motivated Java Developer with 1 year of experience building scalable web applications. 
+        Expertise in optimizing RESTful APIs and MySQL queries in Agile environments, improving system performance by up to 25%. 
+        Certified in Java Full Stack Development, passionate about delivering modular, high-quality code.
     </p>
 </section>
 
 <section class="reveal">
     <div class="resume-cta">
-        <h2 style="font-size: 2rem; margin-bottom: 15px;">Want the full Resume?</h2>
-        <p style="color: var(--text-dim); margin-bottom: 35px; font-size: 1.1rem;">Get a detailed breakdown of my technical certifications and project metrics.</p>
+        <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Looking for the full Resume?</h2>
+        <p style="color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem;">Download my detailed CV to view full certifications, metrics, and technical expertise.</p>
         <a href="https://empty-glitter-335.linkyhost.com/" target="_blank" class="btn">Download CV</a>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Technical Expertise</h2>
+    <h2 class="section-title">Technical <span>Expertise</span></h2>
     <div class="grid-container">
         <div class="skill-group">
-            <h4 style="margin-bottom: 20px; color: var(--text-main);">Backend & Logic</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Backend Architecture</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span>
                 <span class="skill-tag">Spring MVC</span><span class="skill-tag">Node.js</span>
@@ -261,15 +234,15 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
             </div>
         </div>
         <div class="skill-group">
-            <h4 style="margin-bottom: 20px; color: var(--text-main);">Infrastructure</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Data & Operations</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">MySQL</span><span class="skill-tag">Postman</span>
                 <span class="skill-tag">Git</span><span class="skill-tag">Maven</span>
-                <span class="skill-tag">Query Optimization</span>
+                <span class="skill-tag">Optimization</span>
             </div>
         </div>
         <div class="skill-group">
-            <h4 style="margin-bottom: 20px; color: var(--text-main);">Architecture</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Engineering Core</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">OOPs</span><span class="skill-tag">Microservices</span>
                 <span class="skill-tag">MVC Architecture</span><span class="skill-tag">Agile</span>
@@ -280,69 +253,69 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title">Work <span>Experience</span></h2>
     <div class="card">
         <h3>Java Developer Trainee</h3>
-        [cite_start]<span class="meta">Integra Micro Systems | Sep 2024 - Sep 2025</span> [cite: 15, 16, 18]
+        <span class="meta">Integra Micro Systems | Sep 2024 - Sep 2025</span>
         <ul>
-            [cite_start]<li>Engineered a scalable Employee Management System using Spring Boot, managing 1,000+ records. [cite: 19]</li>
-            [cite_start]<li>Architected 15+ RESTful APIs, boosting data retrieval speed by 25%. [cite: 20]</li>
-            [cite_start]<li>Refactored 30+ SQL queries, achieving a 20% reduction in database latency. [cite: 21]</li>
-            [cite_start]<li>Achieved 100% API test coverage using Postman. [cite: 23]</li>
+            <li>Engineered a scalable Employee Management System using Spring Boot, managing 1,000+ records.</li>
+            <li>Architected 15+ RESTful APIs, boosting data retrieval speed and front-end responsiveness by 25%.</li>
+            <li>Refactored 30+ SQL queries, achieving a 20% reduction in average database latency.</li>
+            <li>Collaborated in Agile sprints, contributing to feature development and high-quality code reviews.</li>
+            <li>Achieved 100% API test coverage using Postman, ensuring zero post-release issues.</li>
         </ul>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Key Projects</h2>
-    
+    <h2 class="section-title">Featured <span>Projects</span></h2>
     <div class="grid-container">
         <div class="card">
             <h3>Employee Management System</h3>
-            [cite_start]<span class="meta">Spring Boot & MySQL</span> [cite: 36, 37]
+            <span class="meta">Spring Boot | Spring MVC | MySQL</span>
             <ul>
-                [cite_start]<li>Implemented role-based access control for admin/user modules. [cite: 38]</li>
-                [cite_start]<li>Built full CRUD operations, reducing manual handling by 40%. [cite: 39]</li>
-                [cite_start]<li>Optimized queries to reduce latency by 20%. [cite: 40]</li>
-                [cite_start]<li>Applied DAO-Service architecture for high scalability. [cite: 41]</li>
+                <li>Implemented role-based access control, improving system security and user experience.</li>
+                <li>Built full CRUD operations, reducing manual data handling efforts by over 40%.</li>
+                <li>Optimized MySQL queries to reduce latency by 20% for 1,000+ records.</li>
+                <li>Applied DAO-Service architecture to ensure scalability and maintainability.</li>
             </ul>
         </div>
 
         <div class="card">
             <h3>Admin Portal</h3>
-            [cite_start]<span class="meta">PHP & Full Stack Training</span> [cite: 43, 44]
+            <span class="meta">Full Stack Training | PHP | MySQL</span>
             <ul>
-                [cite_start]<li>Supports 500+ records with secure authentication. [cite: 45, 46]</li>
-                [cite_start]<li>Improved content management efficiency by 30%. [cite: 46]</li>
-                [cite_start]<li>Managed backend logic and page routing using MVC. [cite: 47]</li>
-                [cite_start]<li>Improved team coordination by 10% in simulated environments. [cite: 48]</li>
+                <li>Designed an admin portal supporting over 500 records with secure authentication.</li>
+                <li>Improved content management efficiency by 30% through streamlined CRUD features.</li>
+                <li>Managed backend logic and page routing using MVC architecture.</li>
+                <li>Improved team coordination by 10% in simulated real-world environments.</li>
             </ul>
         </div>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Education</h2>
-    <div class="card">
+    <h2 class="section-title">Academic <span>Background</span></h2>
+    <div class="card" style="display: flex; flex-direction: column; align-items: flex-start;">
         <h3>B.E. Information Science</h3>
-        <p>Rajarajeswari College of Engineering | [cite_start]**7.5 CGPA**</p> [cite: 25, 26]
-        <div style="margin-top: 15px;">
-            <span class="skill-tag">Java Full Stack (Jspiders)</span>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">Rajarajeswari College of Engineering | 7.5 CGPA | 2023 Graduate</p>
+        <div class="tag-cloud">
+            <span class="skill-tag">Certified Java Full Stack (Jspiders)</span>
             <span class="skill-tag">Spring Boot (Udemy)</span>
-            [cite_start]<span class="skill-tag">Core Java (Udemy)</span> [cite: 32, 33, 34]
+            <span class="skill-tag">Core Java</span>
         </div>
     </div>
 </section>
 
 <footer id="contact">
-    <p style="margin-bottom: 10px;">Reach out at:</p>
-    [cite_start]<a href="mailto:rohanhalappa2001@gmail.com" style="font-size: 1.5rem; color: #fff; font-weight: 800;">rohanhalappa2001@gmail.com</a> [cite: 2]
-    [cite_start]<p style="margin-top: 10px; color: var(--text-dim);">+91-9845128895</p> [cite: 2]
-    <div style="margin-top: 30px;">
-        [cite_start]<a href="https://www.linkedin.com/in/rohanhalappa/" style="color: var(--text-dim); margin: 0 15px;">LinkedIn</a> [cite: 3]
-        [cite_start]<a href="https://github.com/Rohan20H" style="color: var(--text-dim); margin: 0 15px;">GitHub</a> [cite: 4]
+    <p style="color: var(--primary); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-size: 0.8rem;">Let's Connect</p>
+    <a href="mailto:rohanhalappa2001@gmail.com" style="font-size: clamp(1.5rem, 5vw, 2.5rem); color: #fff; font-weight: 800; text-decoration: none; transition: 0.3s;">rohanhalappa2001@gmail.com</a>
+    <p style="margin-top: 15px; color: var(--text-dim); font-size: 1.2rem;">+91-9845128895</p>
+    <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px;">
+        <a href="https://www.linkedin.com/in/rohanhalappa/" target="_blank" style="color: var(--text-dim); font-size: 1rem; text-decoration: none;">LinkedIn</a>
+        <a href="https://github.com/Rohan20H" target="_blank" style="color: var(--text-dim); font-size: 1rem; text-decoration: none;">GitHub</a>
     </div>
-    <p style="margin-top: 50px; font-size: 0.8rem; color: #334155;">© 2026 Rohan H | Crafting Backend Excellence</p>
+    <p style="margin-top: 80px; font-size: 0.75rem; color: #334155; letter-spacing: 1px;">© 2026 ROHAN H. ENGINEERED FOR PERFORMANCE.</p>
 </footer>
 
 <script>
@@ -363,5 +336,3 @@ To elevate your portfolio, I have updated the code with a **modern glassmorphism
 
 </body>
 </html>
-
-```
