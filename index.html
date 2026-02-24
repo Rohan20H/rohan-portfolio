@@ -1,153 +1,229 @@
-import React, { useState } from "react";
-import { motion } from "framer-motion";
-import { Typewriter } from "react-simple-typewriter";
-import { FaGithub, FaLinkedin } from "react-icons/fa";
-import emailjs from "emailjs-com";
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rohan H | Java Developer</title>
 
-export default function App() {
-  const [darkMode, setDarkMode] = useState(true);
+<!-- Google Font -->
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
 
-  const sendEmail = (e) => {
-    e.preventDefault();
-    emailjs
-      .sendForm(
-        "YOUR_SERVICE_ID",
-        "YOUR_TEMPLATE_ID",
-        e.target,
-        "YOUR_PUBLIC_KEY"
-      )
-      .then(
-        () => alert("Message Sent Successfully 🚀"),
-        () => alert("Failed to send message ❌")
-      );
-    e.target.reset();
-  };
-
-  return (
-    <div className={darkMode ? "dark" : ""}>
-      <div className="min-h-screen bg-white dark:bg-gray-900 text-black dark:text-white transition-all duration-500">
-
-        {/* Navbar */}
-        <div className="flex justify-between p-6">
-          <h1 className="text-2xl font-bold">Rohan H</h1>
-          <button
-            onClick={() => setDarkMode(!darkMode)}
-            className="bg-blue-500 px-4 py-2 rounded-lg"
-          >
-            Toggle Theme
-          </button>
-        </div>
-
-        {/* Hero Section */}
-        <motion.div
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          className="text-center mt-20"
-        >
-          <h2 className="text-4xl font-bold">
-            I'm a{" "}
-            <span className="text-blue-500">
-              <Typewriter
-                words={[
-                  "Java Developer",
-                  "Full Stack Developer",
-                  "Spring Boot Developer",
-                ]}
-                loop={true}
-                cursor
-                cursorStyle="|"
-                typeSpeed={70}
-                deleteSpeed={50}
-              />
-            </span>
-          </h2>
-
-          <p className="mt-6 max-w-xl mx-auto">
-            Passionate about building scalable backend systems using Java,
-            Spring Boot, REST APIs, and modern frontend technologies.
-          </p>
-
-          <div className="mt-6 space-x-4">
-            <a
-              href="/Rohan_H_Resume.pdf"
-              download
-              className="bg-green-500 px-6 py-2 rounded-lg"
-            >
-              Download Resume
-            </a>
-
-            <a href="https://github.com/Rohan20H">
-              <FaGithub className="inline text-2xl" />
-            </a>
-            <a href="https://linkedin.com">
-              <FaLinkedin className="inline text-2xl ml-4" />
-            </a>
-          </div>
-        </motion.div>
-
-        {/* Skills Section */}
-        <div className="mt-32 text-center">
-          <h2 className="text-3xl font-bold mb-6">Skills</h2>
-          <div className="flex flex-wrap justify-center gap-4">
-            {[
-              "Java",
-              "Spring Boot",
-              "Hibernate",
-              "MySQL",
-              "React",
-              "REST APIs",
-              "Git",
-            ].map((skill, index) => (
-              <motion.div
-                key={index}
-                whileHover={{ scale: 1.1 }}
-                className="bg-blue-500 px-4 py-2 rounded-lg"
-              >
-                {skill}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Contact Section */}
-        <div className="mt-32 pb-20 text-center">
-          <h2 className="text-3xl font-bold mb-6">Contact Me</h2>
-
-          <form
-            onSubmit={sendEmail}
-            className="max-w-md mx-auto space-y-4"
-          >
-            <input
-              type="text"
-              name="name"
-              placeholder="Your Name"
-              required
-              className="w-full p-3 rounded bg-gray-200 dark:bg-gray-700"
-            />
-            <input
-              type="email"
-              name="email"
-              placeholder="Your Email"
-              required
-              className="w-full p-3 rounded bg-gray-200 dark:bg-gray-700"
-            />
-            <textarea
-              name="message"
-              placeholder="Your Message"
-              required
-              className="w-full p-3 rounded bg-gray-200 dark:bg-gray-700"
-            />
-            <button
-              type="submit"
-              className="bg-blue-500 px-6 py-2 rounded-lg"
-            >
-              Send Message
-            </button>
-          </form>
-        </div>
-
-      </div>
-    </div>
-  );
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
 }
+
+body{
+    background:#0f172a;
+    color:white;
+    scroll-behavior:smooth;
+}
+
+header{
+    height:100vh;
+    display:flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    background:linear-gradient(135deg,#1e293b,#0f172a);
+}
+
+header h1{
+    font-size:3rem;
+    animation:slideDown 1.5s ease;
+}
+
+header h2{
+    font-weight:300;
+    margin-top:10px;
+    color:#38bdf8;
+    animation:fadeIn 2s ease;
+}
+
+.btn{
+    margin-top:20px;
+    padding:12px 25px;
+    background:#38bdf8;
+    border:none;
+    border-radius:25px;
+    cursor:pointer;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.btn:hover{
+    background:#0284c7;
+    transform:scale(1.05);
+}
+
+section{
+    padding:80px 10%;
+}
+
+.section-title{
+    font-size:2rem;
+    margin-bottom:30px;
+    border-left:5px solid #38bdf8;
+    padding-left:10px;
+}
+
+.about p{
+    line-height:1.7;
+    color:#cbd5e1;
+}
+
+.skills-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:20px;
+}
+
+.skill-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    text-align:center;
+    transition:0.3s;
+}
+
+.skill-card:hover{
+    background:#334155;
+    transform:translateY(-5px);
+}
+
+.projects{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(280px,1fr));
+    gap:25px;
+}
+
+.project-card{
+    background:#1e293b;
+    padding:20px;
+    border-radius:10px;
+    transition:0.3s;
+}
+
+.project-card:hover{
+    transform:scale(1.03);
+    background:#334155;
+}
+
+footer{
+    text-align:center;
+    padding:20px;
+    background:#1e293b;
+    color:#94a3b8;
+}
+
+@keyframes slideDown{
+    from{transform:translateY(-50px);opacity:0;}
+    to{transform:translateY(0);opacity:1;}
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+/* Scroll Animation */
+.hidden{
+    opacity:0;
+    transform:translateY(40px);
+    transition:all 0.8s ease;
+}
+
+.show{
+    opacity:1;
+    transform:translateY(0);
+}
+
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Rohan H</h1>
+    <h2>Java Developer | Spring Boot | Backend Engineer</h2>
+    <button class="btn" onclick="scrollToSection()">View My Work</button>
+</header>
+
+<section class="about hidden">
+    <h2 class="section-title">About Me</h2>
+    <p>
+        Motivated Java Developer with 1+ year experience in building scalable web applications using 
+        Java, Spring Boot, Hibernate, and MySQL. Strong understanding of OOPS, REST APIs, 
+        MVC architecture, and Agile methodology. Passionate about clean code, performance optimization,
+        and building reliable backend systems.
+    </p>
+</section>
+
+<section class="skills hidden">
+    <h2 class="section-title">Technical Skills</h2>
+    <div class="skills-grid">
+        <div class="skill-card">Java</div>
+        <div class="skill-card">Spring Boot</div>
+        <div class="skill-card">Hibernate</div>
+        <div class="skill-card">MySQL</div>
+        <div class="skill-card">REST APIs</div>
+        <div class="skill-card">HTML/CSS</div>
+        <div class="skill-card">JavaScript</div>
+        <div class="skill-card">Git</div>
+    </div>
+</section>
+
+<section class="hidden">
+    <h2 class="section-title">Projects</h2>
+    <div class="projects">
+        <div class="project-card">
+            <h3>Employee Management System</h3>
+            <p>Built using Spring Boot, Hibernate & MySQL with full CRUD operations and validation.</p>
+        </div>
+        <div class="project-card">
+            <h3>Department Management Module</h3>
+            <p>Implemented Admin/User roles with secure authentication and REST API integration.</p>
+        </div>
+        <div class="project-card">
+            <h3>Attendance Tracking System</h3>
+            <p>Developed form validations, database integration, and efficient query optimization.</p>
+        </div>
+    </div>
+</section>
+
+<section class="hidden">
+    <h2 class="section-title">Contact</h2>
+    <p>Email: rohanhalappa2001@gmail.com</p>
+    <p>Phone: 9845128895</p>
+    <p>LinkedIn: linkedin.com/in/rohanhalappa</p>
+    <p>GitHub: github.com/Rohan20H</p>
+</section>
+
+<footer>
+    © 2026 Rohan H
+</footer>
+
+<script>
+
+function scrollToSection(){
+    document.querySelector('.about').scrollIntoView({behavior:'smooth'});
+}
+
+// Scroll Reveal Animation
+const observer = new IntersectionObserver((entries)=>{
+    entries.forEach(entry=>{
+        if(entry.isIntersecting){
+            entry.target.classList.add("show");
+        }
+    });
+});
+
+document.querySelectorAll(".hidden").forEach((el)=>observer.observe(el));
+
+</script>
+
+</body>
+</html>
