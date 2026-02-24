@@ -39,12 +39,10 @@
         .hero-content h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
         .hero-content h2 { color: var(--primary); font-weight: 400; font-size: 1.5rem; margin-bottom: 30px; }
 
-        /* Navigation & Download Buttons */
-        .btn-group { display: flex; gap: 15px; }
         .btn {
             padding: 15px 35px;
             background: var(--primary);
-            color: #000;
+            color: #0f172a;
             border: none;
             border-radius: 50px;
             font-weight: 700;
@@ -54,18 +52,12 @@
             text-decoration: none;
             display: inline-block;
         }
-        .btn-outline {
-            background: transparent;
-            border: 2px solid var(--primary);
-            color: var(--primary);
-        }
         .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
 
         section { padding: 80px 15%; }
         .section-title { font-size: 2.5rem; margin-bottom: 50px; position: relative; }
         .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: var(--primary); }
 
-        /* Grid Layouts */
         .grid-container {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -89,6 +81,15 @@
         .card ul { margin-left: 20px; color: #cbd5e1; list-style-type: square; }
         .card li { margin-bottom: 10px; }
 
+        /* Dedicated Resume Section Styling */
+        .resume-cta {
+            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            text-align: center;
+            border-radius: 20px;
+            padding: 50px;
+            border: 1px dashed var(--primary);
+        }
+
         footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #1e293b; }
 
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
@@ -97,7 +98,6 @@
         @media (max-width: 768px) {
             section { padding: 60px 8%; }
             .hero-content h1 { font-size: 2.8rem; }
-            .btn-group { flex-direction: column; }
         }
     </style>
 </head>
@@ -107,20 +107,25 @@
     <div class="hero-content">
         <h1>Rohan H</h1>
         <h2>Java Developer Trainee | Full Stack Backend Engineer</h2>
-        <div class="btn-group">
-            <a href="#about" class="btn">Explore Work</a>
-            <a href="Rohan H C V 1.pdf" download class="btn btn-outline">Download CV</a>
-        </div>
+        <a href="#about" class="btn">Explore My Work</a>
     </div>
 </header>
 
 <section id="about" class="reveal">
     <h2 class="section-title">Professional Summary</h2>
     <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 900px;">
-        Motivated Java Developer Trainee with 1 year of experience building scalable web applications using Java, Spring Boot, and Node.js[cite: 7, 8]. 
-        Expertise in optimizing RESTful APIs and MySQL queries in Agile environments, improving system performance and front-end responsiveness[cite: 8, 20]. 
-        Certified in Java Full Stack Development, eager to deliver modular, high-quality code[cite: 9, 33].
+        [cite_start]Motivated Java Developer Trainee with 1 year of experience building scalable web applications using Java, Spring Boot, and Node.js[cite: 7, 8]. 
+        [cite_start]Expertise in optimizing RESTful APIs and MySQL queries in Agile environments, improving system performance by up to 25%[cite: 8, 20]. 
+        [cite_start]Certified in Java Full Stack Development, passionate about delivering modular, high-quality code[cite: 9, 33].
     </p>
+</section>
+
+<section class="reveal">
+    <div class="resume-cta">
+        <h2 style="margin-bottom: 15px;">Looking for the full story?</h2>
+        <p style="color: var(--text-dim); margin-bottom: 30px;">Download my comprehensive CV for a detailed look at my technical journey and certifications.</p>
+        <a href="https://rohan-h-c-v-1-2.tiiny.site" target="_blank" class="btn">Download My CV</a>
+    </div>
 </section>
 
 <section class="reveal">
@@ -131,7 +136,7 @@
             <div class="tag-cloud">
                 <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span>
                 <span class="skill-tag">Spring MVC</span><span class="skill-tag">Node.js</span>
-                <span class="skill-tag">RESTful APIs</span><span class="skill-tag">PHP</span>
+                [cite_start]<span class="skill-tag">RESTful APIs</span><span class="skill-tag">PHP</span> [cite: 11]
             </div>
         </div>
         <div class="skill-group">
@@ -139,15 +144,15 @@
             <div class="tag-cloud">
                 <span class="skill-tag">MySQL</span><span class="skill-tag">Postman</span>
                 <span class="skill-tag">Git</span><span class="skill-tag">Maven</span>
-                <span class="skill-tag">Query Optimization</span>
+                [cite_start]<span class="skill-tag">Query Optimization</span> [cite: 11, 12]
             </div>
         </div>
         <div class="skill-group">
             <h4>Core Architecture</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">OOPs</span><span class="skill-tag">Microservices</span>
-                <span class="skill-tag">MVC</span><span class="skill-tag">Agile Methodology</span>
-                <span class="skill-tag">Multithreading</span>
+                <span class="skill-tag">MVC</span><span class="skill-tag">Agile</span>
+                [cite_start]<span class="skill-tag">Multithreading</span> [cite: 13]
             </div>
         </div>
     </div>
@@ -157,13 +162,13 @@
     <h2 class="section-title">Experience</h2>
     <div class="card">
         <h3>Java Developer Trainee</h3>
-        <span class="meta">Integra Micro Systems pvt ltd | Sep 2024 - Sep 2025 [cite: 15, 16, 18]</span>
+        <span class="meta">Integra Micro Systems pvt ltd | [cite_start]Sep 2024 - Sep 2025 [cite: 18]</span>
         <ul>
-            <li>Engineered a scalable Java-based Employee Management System using Spring Boot and Spring MVC, managing 1,000+ employee records[cite: 19].</li>
-            <li>Architected and deployed 15+ RESTful APIs across core modules, resulting in a 25% boost in data retrieval speed[cite: 20].</li>
-            <li>Refactored 30+ SQL queries and applied indexing strategies in MySQL, achieving a 20% reduction in average database latency[cite: 21].</li>
-            <li>Collaborated with 4+ cross-functional team members in Agile sprints, contributing to planning, feature development, and code reviews[cite: 22].</li>
-            <li>Achieved 100% API test coverage using Postman, ensuring zero post-release issues[cite: 23].</li>
+            [cite_start]<li>Engineered a scalable Java-based Employee Management System using Spring Boot and Spring MVC, managing 1,000+ employee records[cite: 19].</li>
+            [cite_start]<li>Architected and deployed 15+ RESTful APIs, resulting in a 25% boost in data retrieval speed[cite: 20].</li>
+            [cite_start]<li>Refactored 30+ SQL queries in MySQL, achieving a 20% reduction in average database latency[cite: 21].</li>
+            [cite_start]<li>Collaborated with 4+ cross-functional team members in Agile sprints[cite: 22].</li>
+            [cite_start]<li>Achieved 100% API test coverage using Postman, ensuring zero post-release issues[cite: 23].</li>
         </ul>
     </div>
 </section>
@@ -173,52 +178,51 @@
     
     <div class="card">
         <h3>Employee Management System</h3>
-        <span class="meta">Full Stack Java Project [cite: 36]</span>
+        <span class="meta">Full Stack Java Project | [cite_start]Integra Micro Systems [cite: 36]</span>
         <ul>
-            <li>Implemented role-based access control with separate admin/user modules, improving system security[cite: 38].</li>
-            <li>Built full CRUD operations across all modules, reducing manual data handling efforts by over 40%[cite: 39].</li>
-            <li>Applied DAO-Service architecture to ensure scalability, maintainability, and separation of concerns[cite: 41].</li>
-            <li>Designed a modular, layered system, improving code reusability by 15%[cite: 42].</li>
+            [cite_start]<li>Implemented role-based access control with separate admin/user modules, improving system security[cite: 38].</li>
+            [cite_start]<li>Built full CRUD operations, reducing manual data handling efforts by over 40%[cite: 39].</li>
+            [cite_start]<li>Applied DAO-Service architecture to ensure scalability and maintainability[cite: 41].</li>
+            [cite_start]<li>Designed a modular, layered system, improving code reusability by 15%[cite: 42].</li>
         </ul>
     </div>
 
     <div class="card">
         <h3>Admin Portal (Training Project)</h3>
-        <span class="meta">JSpiders Web Development [cite: 43]</span>
+        [cite_start]<span class="meta">JSpiders Web Development [cite: 43]</span>
         <ul>
-            <li>Designed and built an admin portal using HTML, CSS, JavaScript, and PHP, supporting over 500 records[cite: 44, 45].</li>
-            <li>Implemented secure basic authentication and CRUD features, improving content management efficiency by 30%[cite: 46].</li>
-            <li>Managed backend logic and page routing using MVC architecture[cite: 47].</li>
-            <li>Collaborated in a simulated real-world environment, improving team coordination skills by 10%[cite: 48].</li>
+            [cite_start]<li>Designed and built an admin portal using HTML, CSS, JavaScript, and PHP for 500+ records[cite: 44, 45].</li>
+            [cite_start]<li>Implemented secure basic authentication and CRUD features, improving efficiency by 30%[cite: 46].</li>
+            [cite_start]<li>Managed backend logic and page routing using MVC architecture[cite: 47].</li>
+            [cite_start]<li>Collaborated in a simulated real-world environment, improving coordination skills by 10%[cite: 48].</li>
         </ul>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Education & Certifications</h2>
+    <h2 class="section-title">Education & Certs</h2>
     <div class="grid-container">
         <div class="skill-group">
             <h4>B.E. Information Science</h4>
-            <p>Rajarajeswari College of Engineering [cite: 26]</p>
-            <span class="meta">7.5 CGPA | Graduated 2023 [cite: 25, 26]</span>
-            <p style="font-size: 0.85rem; margin-top: 10px; color: var(--text-dim);">Coursework: Data Structures, Algorithms, DBMS, Web Development [cite: 27]</p>
+            [cite_start]<p>Rajarajeswari College of Engineering [cite: 26]</p>
+            <span class="meta">7.5 CGPA | [cite_start]Graduated 2023 [cite: 26]</span>
+            [cite_start]<p style="font-size: 0.85rem; margin-top: 10px; color: var(--text-dim);">Coursework: Data Structures, Algorithms, DBMS, Web Development [cite: 27]</p>
         </div>
         <div class="skill-group">
             <h4>Certifications</h4>
             <ul style="list-style: none; color: #cbd5e1; font-size: 0.9rem;">
-                <li>• Java Full stack Development (Jspiders) [cite: 33]</li>
-                <li>• Core Java Course (Udemy) [cite: 33]</li>
-                <li>• Spring MVC and Spring Boot (Udemy) [cite: 34]</li>
+                [cite_start]<li>• Java Full stack Development (Jspiders) [cite: 33]</li>
+                [cite_start]<li>• Core Java Course (Udemy) [cite: 33]</li>
+                [cite_start]<li>• Spring MVC and Spring Boot (Udemy) [cite: 34]</li>
             </ul>
         </div>
     </div>
 </section>
 
 <footer id="contact">
-    <h2 class="section-title" style="font-size: 1.5rem; margin-bottom: 20px;">Get In Touch</h2>
-    <p>Email: <a href="mailto:rohanhalappa2001@gmail.com" style="color: var(--primary);">rohanhalappa2001@gmail.com</a></p>
-    <p>Phone: +91-9845128895 [cite: 2]</p>
-    <p style="margin-top: 20px;">LinkedIn: <a href="https://linkedin.com/in/rohanh" style="color: var(--primary);">rohanh</a> [cite: 3] | GitHub: <a href="https://github.com/Rohan20H" style="color: var(--primary);">Rohan20H</a> [cite: 4]</p>
+    [cite_start]<p>Email: <a href="mailto:rohanhalappa2001@gmail.com" style="color: var(--primary);">rohanhalappa2001@gmail.com</a> [cite: 2]</p>
+    [cite_start]<p>Phone: +91-9845128895 [cite: 2]</p>
+    [cite_start]<p style="margin-top: 20px;">LinkedIn: <a href="https://linkedin.com/in/rohanh" style="color: var(--primary);">rohanh</a> [cite: 3] | [cite_start]GitHub: <a href="https://github.com/Rohan20H" style="color: var(--primary);">Rohan20H</a> [cite: 4]</p>
     <p style="margin-top: 30px; font-size: 0.8rem;">© 2026 Rohan H | All Rights Reserved</p>
 </footer>
 
