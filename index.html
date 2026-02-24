@@ -12,7 +12,7 @@
             --card-bg: #1e293b;
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
-            --accent-glow: rgba(56, 189, 248, 0.15);
+            --accent-glow: rgba(56, 189, 248, 0.2);
         }
 
         * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
@@ -21,7 +21,7 @@
             background: var(--bg-dark);
             color: var(--text-main);
             line-height: 1.6;
-            overflow-x: hidden;
+            scroll-behavior: smooth;
         }
 
         /* Hero Section */
@@ -36,12 +36,12 @@
             padding: 20px;
         }
 
-        .hero-content h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
+        .hero-content h1 { font-size: 4rem; margin-bottom: 10px; }
         .hero-content h2 { color: var(--primary); font-weight: 400; font-size: 1.5rem; margin-bottom: 35px; }
 
-        /* Action Buttons */
         .btn-container { display: flex; gap: 20px; flex-wrap: wrap; justify-content: center; }
 
+        /* The Download Button Style */
         .btn {
             padding: 14px 35px;
             border-radius: 50px;
@@ -50,13 +50,14 @@
             cursor: pointer;
             transition: 0.4s;
             text-decoration: none;
-            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
         }
 
         .btn-primary {
             background: var(--primary);
             color: #0f172a;
-            border: none;
             box-shadow: 0 10px 20px var(--accent-glow);
         }
 
@@ -66,13 +67,12 @@
             border: 2px solid var(--primary);
         }
 
-        .btn:hover { transform: translateY(-3px); box-shadow: 0 15px 30px var(--accent-glow); filter: brightness(1.1); }
+        .btn:hover { transform: translateY(-3px); filter: brightness(1.1); }
 
         section { padding: 80px 15%; }
         .section-title { font-size: 2.2rem; margin-bottom: 40px; position: relative; display: inline-block; }
-        .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 50%; height: 4px; background: var(--primary); }
+        .section-title::after { content: ''; position: absolute; bottom: -8px; left: 0; width: 60px; height: 4px; background: var(--primary); }
 
-        /* Experience & Projects */
         .card {
             background: var(--card-bg);
             padding: 30px;
@@ -82,75 +82,63 @@
             transition: 0.3s ease;
         }
         .card:hover { border-color: var(--primary); background: #243146; }
-        .card h3 { color: var(--primary); margin-bottom: 8px; font-size: 1.4rem; }
-        .card .meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 15px; display: block; font-weight: 600; }
+        .card h3 { color: var(--primary); margin-bottom: 8px; }
+        .card .meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 15px; display: block; }
         .card ul { list-style: none; }
         .card li { margin-bottom: 10px; position: relative; padding-left: 20px; color: #cbd5e1; }
-        .card li::before { content: '→'; position: absolute; left: 0; color: var(--primary); }
+        .card li::before { content: '▹'; position: absolute; left: 0; color: var(--primary); }
 
-        /* Skills Grid */
         .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; }
         .skill-box { background: var(--card-bg); padding: 20px; border-radius: 12px; }
-        .skill-box h4 { font-size: 1rem; color: var(--primary); margin-bottom: 12px; }
-        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; }
-        .tag { background: #334155; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; color: #e2e8f0; }
+        .tag-cloud { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+        .tag { background: #334155; padding: 4px 12px; border-radius: 6px; font-size: 0.8rem; }
 
-        footer { text-align: center; padding: 40px; border-top: 1px solid #1e293b; color: var(--text-dim); font-size: 0.9rem; }
+        footer { text-align: center; padding: 40px; border-top: 1px solid #1e293b; color: var(--text-dim); }
 
-        /* Scroll Animation */
         .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
         .reveal.active { opacity: 1; transform: translateY(0); }
-
-        @media (max-width: 768px) {
-            section { padding: 60px 8%; }
-            .hero-content h1 { font-size: 2.8rem; }
-        }
     </style>
 </head>
 <body>
 
 <header>
     <div class="hero-content">
-        <h1>Rohan H</h1>
-        <h2>Java Developer | Spring Boot | Backend Engineer</h2>
+        <h1>Rohan H</h1> [cite: 5]
+        <h2>Java Developer | Spring Boot | Backend Engineer</h2> [cite: 8, 18]
         <div class="btn-container">
-            <a href="#projects" class="btn btn-primary">View Projects</a>
-            <a href="Rohan H C V 1.pdf" download class="btn btn-outline">Download CV</a>
+            <a href="#experience" class="btn btn-primary">View Experience</a>
+            <a href="Rohan H C V 1.pdf" download="Rohan_H_Resume.pdf" class="btn btn-outline">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+                Download Resume
+            </a>
         </div>
     </div>
 </header>
 
 <section id="about" class="reveal">
-    <h2 class="section-title">Summary</h2>
-    <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 800px;">
-        Motivated **Java Developer Trainee** with 1 year of experience [cite: 7] building scalable web applications using **Java, Spring Boot, and Node.js**[cite: 8]. 
-        Specialized in optimizing **RESTful APIs** and **MySQL queries**, achieving significant improvements in system responsiveness and data latency[cite: 8, 20, 21].
+    <h2 class="section-title">Professional Summary</h2>
+    <p style="font-size: 1.1rem; color: #cbd5e1;">
+        Motivated Java Developer Trainee with 1 year of experience building scalable web applications using Java, Spring Boot, and Node.js[cite: 7, 8]. 
+        Skilled in optimizing RESTful APIs and MySQL queries in Agile environments, improving system performance by up to 25%[cite: 8, 20].
     </p>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Technical Expertise</h2>
+    <h2 class="section-title">Technical Skills</h2>
     <div class="skills-grid">
         <div class="skill-box">
-            <h4>Backend & Logic</h4>
+            <h4>Languages & Frameworks</h4>
             <div class="tag-cloud">
-                <span class="tag">Java</span><span class="tag">Spring Boot</span>
-                <span class="tag">Spring MVC</span><span class="tag">Node.js</span>
-                <span class="tag">Multithreading</span><span class="tag">Microservices</span>
+                <span class="tag">Java</span><span class="tag">Spring Boot</span> [cite: 11]
+                <span class="tag">Spring MVC</span><span class="tag">Node.js</span> [cite: 8, 11]
+                <span class="tag">PHP</span><span class="tag">JavaScript</span> [cite: 11]
             </div>
         </div>
         <div class="skill-box">
             <h4>Database & Tools</h4>
             <div class="tag-cloud">
-                <span class="tag">MySQL</span><span class="tag">Query Optimization</span>
-                <span class="tag">Postman</span><span class="tag">Git</span><span class="tag">Maven</span>
-            </div>
-        </div>
-        <div class="skill-box">
-            <h4>Frontend & Others</h4>
-            <div class="tag-cloud">
-                <span class="tag">HTML/CSS</span><span class="tag">JavaScript</span>
-                <span class="tag">PHP</span><span class="tag">RESTful APIs</span><span class="tag">Agile</span>
+                <span class="tag">MySQL</span><span class="tag">Postman</span> [cite: 11, 12]
+                <span class="tag">Git</span><span class="tag">Maven</span> [cite: 12]
             </div>
         </div>
     </div>
@@ -159,46 +147,29 @@
 <section id="experience" class="reveal">
     <h2 class="section-title">Experience</h2>
     <div class="card">
-        <h3>Java Developer Trainee</h3>
-        <span class="meta">Integra Micro Systems pvt ltd, Bangalore | Sep 2024 - Sep 2025</span>
+        <h3>Java Developer Trainee</h3> [cite: 18]
+        <span class="meta">Integra Micro Systems pvt ltd | Sep 2024 - Sep 2025</span> [cite: 18]
         <ul>
-            <li>Engineered a scalable Employee Management System using **Spring Boot** for 1,000+ records[cite: 19].</li>
-            <li>Deployed 15+ **RESTful APIs**, resulting in a **25% boost** in data retrieval speed[cite: 20].</li>
-            <li>Refactored 30+ SQL queries and applied indexing, reducing database latency by **20%**[cite: 21].</li>
-            <li>Maintained 100% API test coverage using **Postman**[cite: 23].</li>
-        </ul>
-    </div>
-</section>
-
-<section id="projects" class="reveal">
-    <h2 class="section-title">Key Projects</h2>
-    <div class="card">
-        <h3>Admin Portal (Training Project)</h3>
-        <span class="meta">JSpiders, Bangalore</span>
-        <ul>
-            <li>Designed a full-stack portal using **PHP and MySQL** for 500+ user records[cite: 44, 45].</li>
-            <li>Implemented secure CRUD features and basic authentication[cite: 46].</li>
-            <li>Improved content management efficiency by **30%** through optimized MVC architecture[cite: 46, 47].</li>
+            <li>Engineered a scalable Java-based Employee Management System using Spring Boot[cite: 19].</li>
+            <li>Architected and deployed 15+ RESTful APIs, boosting data retrieval speed by 25%[cite: 20].</li>
+            <li>Refactored 30+ SQL queries, achieving a 20% reduction in database latency[cite: 21].</li>
+            <li>Achieved 100% API test coverage using Postman[cite: 23].</li>
         </ul>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Education & Certifications</h2>
-    <div class="card" style="border-left: 4px solid var(--primary);">
-        <p><strong>Bachelor of Engineering: Information Science</strong> [cite: 25]</p>
-        <p style="color: var(--text-dim);">Rajarajeswari College of Engineering | 7.5 CGPA [cite: 26]</p>
-        <div class="tag-cloud" style="margin-top: 15px;">
-            <span class="tag">Java Full Stack (JSpiders)</span>
-            <span class="tag">Core Java (Udemy)</span>
-            <span class="tag">Spring Boot (Udemy)</span>
-        </div>
+    <h2 class="section-title">Education</h2>
+    <div class="card">
+        <h3>Bachelor of Engineering in Information Science</h3> [cite: 25]
+        <span class="meta">Rajarajeswari College of Engineering | 7.5 CGPA</span> [cite: 26]
+        <p>Relevant Coursework: Data Structures, Algorithms, DBMS, Web Development [cite: 27]</p>
     </div>
 </section>
 
 <footer>
-    <p>rohanhalappa2001@gmail.com | +91-9845128895 [cite: 2]</p>
-    <p style="margin-top: 10px;">© 2026 Rohan H. All Rights Reserved.</p>
+    <p>Contact: rohanhalappa2001@gmail.com | +91-9845128895</p> [cite: 2]
+    <p style="margin-top: 10px;">© 2026 Rohan H. Built with passion.</p>
 </footer>
 
 <script>
