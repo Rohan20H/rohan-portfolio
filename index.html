@@ -4,24 +4,45 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rohan H | Java Developer Portfolio</title>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #38bdf8;
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
+            --accent: #6366f1;
+            --bg-dark: #020617;
+            --card-bg: rgba(30, 41, 59, 0.4);
             --text-main: #f8fafc;
             --text-dim: #94a3b8;
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --selection-bg: rgba(99, 102, 241, 0.3);
         }
 
-        * { margin:0; padding:0; box-sizing:border-box; font-family:'Inter', sans-serif; }
+        * { margin:0; padding:0; box-sizing:border-box; font-family: 'Plus Jakarta Sans', sans-serif; }
+        ::selection { background: var(--selection-bg); color: #fff; }
 
         body {
             background: var(--bg-dark);
             color: var(--text-main);
-            line-height: 1.6;
+            line-height: 1.7;
             overflow-x: hidden;
             scroll-behavior: smooth;
+        }
+
+        /* Ambient Background Glows */
+        .bg-glow-1 {
+            position: fixed; top: -10%; left: -10%; width: 50vw; height: 50vw;
+            background: radial-gradient(circle, rgba(99, 102, 241, 0.1) 0%, transparent 70%);
+            z-index: -1; animation: float 20s infinite alternate;
+        }
+        .bg-glow-2 {
+            position: fixed; bottom: -10%; right: -10%; width: 40vw; height: 40vw;
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+            z-index: -1; animation: float 15s infinite alternate-reverse;
+        }
+
+        @keyframes float {
+            from { transform: translate(0, 0) rotate(0deg); }
+            to { transform: translate(100px, 50px) rotate(10deg); }
         }
 
         /* Hero Section */
@@ -31,77 +52,150 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            background: radial-gradient(circle at center, #1e293b 0%, #0f172a 100%);
+            background: radial-gradient(circle at center, #0f172a 0%, #020617 100%);
             text-align: center;
             padding: 20px;
         }
 
-        .hero-content h1 { font-size: 4rem; margin-bottom: 10px; letter-spacing: -1px; }
-        .hero-content h2 { color: var(--primary); font-weight: 400; font-size: 1.5rem; margin-bottom: 30px; }
+        .hero-content h1 { 
+            font-size: clamp(3.5rem, 10vw, 6rem); 
+            font-weight: 800;
+            margin-bottom: 10px; 
+            letter-spacing: -3px;
+            background: linear-gradient(135deg, #fff 30%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            animation: heroReveal 1.2s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        @keyframes heroReveal {
+            from { opacity: 0; transform: translateY(30px); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0); filter: blur(0); }
+        }
+
+        .hero-content h2 { 
+            color: var(--text-dim); 
+            font-weight: 400; 
+            font-size: 1.5rem; 
+            margin-bottom: 40px; 
+            letter-spacing: 2px;
+            opacity: 0.8;
+        }
 
         .btn {
-            padding: 15px 35px;
-            background: var(--primary);
-            color: #0f172a;
+            padding: 18px 45px;
+            background: linear-gradient(135deg, var(--accent), var(--primary));
+            color: #fff;
             border: none;
-            border-radius: 50px;
+            border-radius: 100px;
             font-weight: 700;
             text-transform: uppercase;
+            letter-spacing: 1px;
             cursor: pointer;
-            transition: 0.4s;
+            transition: all 0.5s cubic-bezier(0.2, 1, 0.3, 1);
             text-decoration: none;
             display: inline-block;
+            box-shadow: 0 15px 30px -10px rgba(99, 102, 241, 0.4);
         }
-        .btn:hover { transform: scale(1.05); box-shadow: 0 0 20px rgba(56, 189, 248, 0.4); }
 
-        section { padding: 80px 15%; }
-        .section-title { font-size: 2.5rem; margin-bottom: 50px; position: relative; }
-        .section-title::after { content: ''; position: absolute; bottom: -10px; left: 0; width: 60px; height: 4px; background: var(--primary); }
+        .btn:hover { 
+            transform: translateY(-5px); 
+            box-shadow: 0 25px 40px -15px rgba(56, 189, 248, 0.6);
+            filter: brightness(1.1);
+        }
 
+        section { padding: 120px 15%; position: relative; }
+        
+        .section-title { 
+            font-size: 3rem; 
+            margin-bottom: 60px; 
+            font-weight: 800;
+            letter-spacing: -1px;
+        }
+        
+        .section-title span { color: var(--primary); }
+
+        /* Modern Card Design */
+        .card, .skill-group, .resume-cta {
+            background: var(--card-bg);
+            backdrop-filter: blur(16px);
+            border: 1px solid var(--glass-border);
+            padding: 45px;
+            border-radius: 32px;
+            transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .card:hover {
+            background: rgba(30, 41, 59, 0.6);
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-10px) scale(1.01);
+            box-shadow: 0 30px 60px -20px rgba(0,0,0,0.6);
+        }
+
+        /* Skills Layout */
         .grid-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
         }
 
-        .skill-group { background: var(--card-bg); padding: 25px; border-radius: 15px; border: 1px solid #334155; }
-        .skill-tag { display: inline-block; background: #334155; padding: 5px 12px; margin: 4px; border-radius: 4px; font-size: 0.85rem; color: var(--primary); }
-
-        .card {
-            background: var(--card-bg);
-            padding: 30px;
-            border-radius: 20px;
-            margin-bottom: 30px;
-            border: 1px solid #334155;
-            transition: 0.3s;
+        .skill-tag { 
+            display: inline-block; 
+            background: rgba(255, 255, 255, 0.05); 
+            padding: 8px 18px; 
+            margin: 6px; 
+            border-radius: 12px; 
+            font-size: 0.9rem; 
+            color: var(--primary); 
+            border: 1px solid var(--glass-border);
+            transition: 0.4s;
         }
-        .card:hover { border-color: var(--primary); transform: translateY(-5px); }
-        .card h3 { color: var(--primary); margin-bottom: 5px; }
-        .card .meta { color: var(--text-dim); font-size: 0.85rem; margin-bottom: 15px; display: block; font-weight: 600; }
-        .card ul { margin-left: 20px; color: #cbd5e1; list-style-type: square; }
-        .card li { margin-bottom: 10px; }
 
-        /* Dedicated Resume Section Styling */
+        .skill-tag:hover {
+            background: var(--primary);
+            color: var(--bg-dark);
+            transform: translateY(-3px);
+            border-color: var(--primary);
+        }
+
+        .card h3 { color: var(--primary); font-size: 1.8rem; margin-bottom: 10px; }
+        .card .meta { color: var(--accent); font-size: 0.9rem; margin-bottom: 25px; font-weight: 600; text-transform: uppercase; }
+        
+        .card ul { list-style: none; }
+        .card li { margin-bottom: 15px; position: relative; padding-left: 28px; color: #cbd5e1; }
+        .card li::before { 
+            content: '→'; 
+            position: absolute; left: 0; color: var(--primary); font-weight: 800;
+        }
+
         .resume-cta {
-            background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+            background: linear-gradient(135deg, rgba(99, 102, 241, 0.15) 0%, rgba(56, 189, 248, 0.1) 100%);
             text-align: center;
-            border-radius: 20px;
-            padding: 50px;
-            border: 1px dashed var(--primary);
+            border: 1px solid rgba(99, 102, 241, 0.2);
         }
 
-        footer { text-align: center; padding: 40px; color: var(--text-dim); border-top: 1px solid #1e293b; }
+        footer { 
+            text-align: center; 
+            padding: 100px 20px; 
+            background: #010409;
+            border-top: 1px solid var(--glass-border);
+        }
 
-        .reveal { opacity: 0; transform: translateY(30px); transition: 0.8s all ease; }
-        .reveal.active { opacity: 1; transform: translateY(0); }
+        /* Reveal Animation Classes */
+        .reveal { opacity: 0; transform: translateY(50px); filter: blur(5px); transition: all 1s cubic-bezier(0.16, 1, 0.3, 1); }
+        .reveal.active { opacity: 1; transform: translateY(0); filter: blur(0); }
 
         @media (max-width: 768px) {
-            section { padding: 60px 8%; }
-            .hero-content h1 { font-size: 2.8rem; }
+            section { padding: 80px 8%; }
+            .section-title { font-size: 2.2rem; }
+            .hero-content h1 { font-size: 3.5rem; }
         }
     </style>
 </head>
 <body>
+
+<div class="bg-glow-1"></div>
+<div class="bg-glow-2"></div>
 
 <header>
     <div class="hero-content">
@@ -112,9 +206,9 @@
 </header>
 
 <section id="about" class="reveal">
-    <h2 class="section-title">Professional Summary</h2>
-    <p style="font-size: 1.1rem; color: #cbd5e1; max-width: 900px;">
-        Motivated Java Developer with 1 year of experience building scalable web applications using Java, Spring Boot, and Node.js. 
+    <h2 class="section-title">Professional <span>Summary</span></h2>
+    <p style="font-size: 1.3rem; color: #cbd5e1; max-width: 950px; font-weight: 300; line-height: 1.8;">
+        Motivated Java Developer with 1 year of experience building scalable web applications. 
         Expertise in optimizing RESTful APIs and MySQL queries in Agile environments, improving system performance by up to 25%. 
         Certified in Java Full Stack Development, passionate about delivering modular, high-quality code.
     </p>
@@ -122,36 +216,36 @@
 
 <section class="reveal">
     <div class="resume-cta">
-        <h2 style="margin-bottom: 15px;">Looking for the full story?</h2>
-        <p style="color: var(--text-dim); margin-bottom: 30px;">Download my comprehensive CV for a detailed look at my technical journey and certifications.</p>
-        <a href="https://empty-glitter-335.linkyhost.com/" target="_blank" class="btn">Download My CV</a>
+        <h2 style="font-size: 2.2rem; margin-bottom: 15px;">Looking for the full Resume?</h2>
+        <p style="color: var(--text-dim); margin-bottom: 40px; font-size: 1.1rem;">Download my detailed CV to view full certifications, metrics, and technical expertise.</p>
+        <a href="https://empty-glitter-335.linkyhost.com/" target="_blank" class="btn">Download CV</a>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Technical Expertise</h2>
+    <h2 class="section-title">Technical <span>Expertise</span></h2>
     <div class="grid-container">
         <div class="skill-group">
-            <h4>Backend & Frameworks</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Backend Architecture</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">Java</span><span class="skill-tag">Spring Boot</span>
                 <span class="skill-tag">Spring MVC</span><span class="skill-tag">Node.js</span>
-                <span class="skill-tag">RESTful APIs</span><span class="skill-tag">PHP</span>
+                <span class="skill-tag">RESTful APIs</span><span class="skill-tag">JSON</span>
             </div>
         </div>
         <div class="skill-group">
-            <h4>Databases & Tools</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Data & Operations</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">MySQL</span><span class="skill-tag">Postman</span>
                 <span class="skill-tag">Git</span><span class="skill-tag">Maven</span>
-                <span class="skill-tag">Query Optimization</span> 
+                <span class="skill-tag">Optimization</span>
             </div>
         </div>
         <div class="skill-group">
-            <h4>Core Architecture</h4>
+            <h4 style="margin-bottom: 25px; color: var(--primary); text-transform: uppercase; font-size: 0.9rem; letter-spacing: 1px;">Engineering Core</h4>
             <div class="tag-cloud">
                 <span class="skill-tag">OOPs</span><span class="skill-tag">Microservices</span>
-                <span class="skill-tag">MVC</span><span class="skill-tag">Agile</span>
+                <span class="skill-tag">MVC Architecture</span><span class="skill-tag">Agile</span>
                 <span class="skill-tag">Multithreading</span>
             </div>
         </div>
@@ -159,87 +253,96 @@
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Experience</h2>
+    <h2 class="section-title">Work <span>Experience</span></h2>
     <div class="card">
         <h3>Java Developer Trainee</h3>
-        <span class="meta">Integra Micro Systems pvt ltd | Sep 2024 - Sep 2025 </span>
+        <span class="meta">Integra Micro Systems | Sep 2024 - Sep 2025</span>
         <ul>
-            <li>Engineered a scalable Java-based Employee Management System using Spring Boot and Spring MVC, managing 1,000+ employee records.</li>
-            <li>Architected and deployed 15+ RESTful APIs, resulting in a 25% boost in data retrieval speed.</li>
-            <li>Refactored 30+ SQL queries in MySQL, achieving a 20% reduction in average database latency.</li>
-            <li>Collaborated with 4+ cross-functional team members in Agile sprints.</li>
+            <li>Engineered a scalable Employee Management System using Spring Boot, managing 1,000+ records.</li>
+            <li>Architected 15+ RESTful APIs, boosting data retrieval speed and front-end responsiveness by 25%.</li>
+            <li>Refactored 30+ SQL queries, achieving a 20% reduction in average database latency.</li>
+            <li>Collaborated in Agile sprints, contributing to feature development and high-quality code reviews.</li>
             <li>Achieved 100% API test coverage using Postman, ensuring zero post-release issues.</li>
         </ul>
     </div>
 </section>
 
 <section class="reveal">
-    <h2 class="section-title">Featured Projects</h2>
-    
-    <div class="card">
-        <h3>Employee Management System</h3>
-        <span class="meta">Full Stack Java Project | Integra Micro Systems </span>
-        <ul>
-            <li>Implemented role-based access control with separate admin/user modules, improving system security.</li>
-            <li>Built full CRUD operations, reducing manual data handling efforts by over 40%.</li>
-            <li>Applied DAO-Service architecture to ensure scalability and maintainability.</li>
-            <li>Designed a modular, layered system, improving code reusability by 15%.</li>
-        </ul>
-    </div>
-
-    <div class="card">
-        <h3>Admin Portal (Training Project)</h3>
-        <span class="meta">JSpiders Web Development </span>
-        <ul>
-            <li>Designed and built an admin portal using HTML, CSS, JavaScript, and PHP for 500+ records.</li>
-            <li>Implemented secure basic authentication and CRUD features, improving efficiency by 30%.</li>
-            <li>Managed backend logic and page routing using MVC architecture.</li>
-            <li>Collaborated in a simulated real-world environment, improving coordination skills by 10%.</li>
-        </ul>
-    </div>
-</section>
-
-<section class="reveal">
-    <h2 class="section-title">Education & Certs</h2>
+    <h2 class="section-title">Featured <span>Projects</span></h2>
     <div class="grid-container">
-        <div class="skill-group">
-            <h4>B.E. Information Science</h4>
-            <p>Rajarajeswari College of Engineering </p>
-            <span class="meta">7.5 CGPA | Graduated 2023 </span>
-            <p style="font-size: 0.85rem; margin-top: 10px; color: var(--text-dim);">Coursework: Data Structures, Algorithms, DBMS, Web Development</p>
+        <div class="card">
+            <h3>Employee Management System</h3>
+            <span class="meta">Spring Boot | Spring MVC | MySQL</span>
+            <ul>
+                <li>Implemented role-based access control, improving system security and user experience.</li>
+                <li>Built full CRUD operations, reducing manual data handling efforts by over 40%.</li>
+                <li>Optimized MySQL queries to reduce latency by 20% for 1,000+ records.</li>
+                <li>Applied DAO-Service architecture to ensure scalability and maintainability.</li>
+            </ul>
         </div>
-        <div class="skill-group">
-            <h4>Certifications</h4>
-            <ul style="list-style: none; color: #cbd5e1; font-size: 0.9rem;">
-                <li>• Java Full stack Development (Jspiders) </li>
-                <li>• Core Java Course (Udemy) </li>
-                <li>• Spring MVC and Spring Boot (Udemy) </li>
+
+        <div class="card">
+            <h3>Admin Portal</h3>
+            <span class="meta">Full Stack Training | PHP | MySQL</span>
+            <ul>
+                <li>Designed an admin portal supporting over 500 records with secure authentication.</li>
+                <li>Improved content management efficiency by 30% through streamlined CRUD features.</li>
+                <li>Managed backend logic and page routing using MVC architecture.</li>
+                <li>Improved team coordination by 10% in simulated real-world environments.</li>
             </ul>
         </div>
     </div>
 </section>
 
+<section class="reveal">
+    <h2 class="section-title">Academic <span>Background</span></h2>
+    <div class="card" style="display: flex; flex-direction: column; align-items: flex-start;">
+        <h3>B.E. Information Science</h3>
+        <p style="color: var(--text-dim); margin-bottom: 20px;">Rajarajeswari College of Engineering | 7.5 CGPA | 2023 Graduate</p>
+        <div class="tag-cloud">
+            <span class="skill-tag">Certified Java Full Stack (Jspiders)</span>
+            <span class="skill-tag">Spring Boot (Udemy)</span>
+            <span class="skill-tag">Core Java</span>
+        </div>
+    </div>
+</section>
+
 <footer id="contact">
-    <p>Email: <a href="mailto:rohanhalappa2001@gmail.com" style="color: var(--primary);">rohanhalappa2001@gmail.com</a> </p>
-    <p>Phone: +91-9845128895 </p>
-    <p style="margin-top: 20px;">LinkedIn: <a href="https://www.linkedin.com/in/rohanhalappa/" style="color: var(--primary);">rohanh</a>  | GitHub: <a href="https://github.com/Rohan20H" style="color: var(--primary);">Rohan20H</a> </p>
-    <p style="margin-top: 30px; font-size: 0.8rem;">© 2026 Rohan H | All Rights Reserved</p>
+    <p style="color: var(--primary); font-weight: 800; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 20px; font-size: 0.8rem;">Let's Connect</p>
+<a href="https://mail.google.com/mail/?view=cm&fs=1&to=rohanhalappa2001@gmail.com" 
+   target="_blank"
+   style="font-size: clamp(1.5rem, 5vw, 2.5rem); 
+          color: #fff; 
+          font-weight: 800; 
+          text-decoration: none; 
+          transition: 0.3s;">
+   rohanhalappa2001@gmail.com
+</a> 
+    
+    <a href="tel:+919845128895" class="contact-phone">
+   +91-9845128895
+       </a>
+    <div style="margin-top: 40px; display: flex; justify-content: center; gap: 30px;">
+        <a href="https://www.linkedin.com/in/rohanhalappa/" target="_blank" style="color: var(--text-dim); font-size: 1rem; text-decoration: none;">LinkedIn</a>
+        <a href="https://github.com/Rohan20H" target="_blank" style="color: var(--text-dim); font-size: 1rem; text-decoration: none;">GitHub</a>
+    </div>
+    <p style="margin-top: 80px; font-size: 0.75rem; color: #334155; letter-spacing: 1px;">© 2026 ROHAN H. ENGINEERED FOR PERFORMANCE.</p>
 </footer>
 
 <script>
     function reveal() {
-        var reveals = document.querySelectorAll(".reveal");
-        for (var i = 0; i < reveals.length; i++) {
-            var windowHeight = window.innerHeight;
-            var elementTop = reveals[i].getBoundingClientRect().top;
-            var elementVisible = 100;
+        const reveals = document.querySelectorAll(".reveal");
+        reveals.forEach(el => {
+            const windowHeight = window.innerHeight;
+            const elementTop = el.getBoundingClientRect().top;
+            const elementVisible = 100;
             if (elementTop < windowHeight - elementVisible) {
-                reveals[i].classList.add("active");
+                el.classList.add("active");
             }
-        }
+        });
     }
     window.addEventListener("scroll", reveal);
-    reveal();
+    window.onload = reveal;
 </script>
 
 </body>
